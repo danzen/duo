@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>DUO Example for traditional or config parameters</title>
+
+        <script src="duo.js"></script>
+        <script type="text/javascript">
+
+            function test(a,b,c){
+               var d; if (d = duo(test, arguments)) return d;
+               console.log(a,b,c);
+            };
+            test(1,undefined,3); // traditional parameters in order
+            test({a:1,c:3}); // configuration object with duo
+
+            // This could be minified
+            function test2(a,b,c){
+                var sig = "a,b,c";
+                var d; if (d = duo(test2, arguments, sig)) return d;
+                console.log(a,b,c);
+            };
+            test2(1,undefined,3); // traditional parameters in order
+            test2({a:1,c:3}); // configuration object with duo
+
+            // pass this (object scope) as last parameter for Classes
+            function Test3(a,b,c){
+                var sig = "a,b,c";
+                var d; if (d = duo(Test3, arguments, sig, this)) return d;
+                console.log(a,b,c);
+            };
+            new Test3(1,undefined,3); // traditional parameters in order
+            new Test3({a:1,c:3}); // configuration object with duo
+
+        </script>
+    </head>
+    <body>
+
+        SEE CONSOLE - F12
+
+
+    </body>
+</html>
