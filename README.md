@@ -52,6 +52,18 @@ new YourClass(1,undefined,3); // traditional parameters in order
 new YourClass({a:1,c:3}); // configuration object with duo
 END EXAMPLE
 
+NOTE: if using an ES6 Class then you also need to use the string sig
+
+EXAMPLE
+class Test extends Container {
+   constructor(a=1,b=2,c=3) {
+      super();
+      var sig = "a,b,c";
+      var duo; if (duo = zob(Test, arguments, sig, this)) return duo;
+   }
+}
+END EXAMPLE
+
 PARAMETERS
 func - reference to the function you want to use params or a config object with
 args - reference to the arguments property of the function (literally, use "arguments" with no quotes)
